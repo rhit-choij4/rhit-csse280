@@ -1,0 +1,23 @@
+body{
+    background: #800000;
+}
+
+.button-group{
+    text-align: center;
+    border: gray solid 5px;
+    /* I like the border . Makes it fancy XD */
+    padding: 5vw;
+}
+
+.button-group > button{
+    font-size: 1.5em;
+    padding: 10 20px;
+    margin: 0 10px ;
+}
+
+#counter {
+    color: white;
+    font: 4em consolas, Arial, Sans-serif;
+    text-align: center;
+    
+}

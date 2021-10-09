@@ -1,1 +1,1 @@
-# rhit-csse280
+# csse280-git

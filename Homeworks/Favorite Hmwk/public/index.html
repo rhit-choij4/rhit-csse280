@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Favorite Number</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Favorite Things</a>
+    <br>
+  </nav>
+  <br>
+  <br>
+  <br>
+
+  
+  <hr>
+
+
+
+  <div id="mainPage" class="container page-container">
+    <h1 id = "favorite">Favorite Number:</h1>
+    <div id = "counterText">0</div>
+
+ 
+    <div id = "counterButtons" class="row justify-content-center">
+      <div class="col-4 col-md-2">
+        <button type ="button" data-amount = "-1" class = "btn btn-block btn-outline-primary" style="background-color: #800000;">-1</button>
+      </div>
+      <div class="col-4 col-md-2">
+        <button type ="button" data-amount = "0" class = "btn btn-block btn-outline-primary" style="background-color: #800000;">Reset</button>
+      </div>
+      <div class="col-4 col-md-2">
+        <button type ="button" data-amount = "1" class = "btn btn-block btn-outline-primary" style="background-color: #800000;">+1</button>
+      </div>
+
+      
+
+    </div>
+
+    
+
+
+  <hr>
+
+  <!-- <div id = "favorite">Favorite Color:</div> -->
+  <h1 id = "favorite">Favorite Color:</h1> 
+
+  <div id="favoriteColorContainer" class="mx-auto">
+    
+    <div id="favoriteColorBox">
+      #800000
+    </div>
+  </div>
+
+    <div id = "colorButtons" class="row no-gutters justify-content-center">
+      <div class="col-3 col-md-2">
+        <button type ="button" data-color = "Blue" class = "btn btn-block btn-outline-primary" style="background-color: blue;">Blue</button>
+      </div>
+      <div class="col-3 col-md-2">
+        <button type ="button" data-color = "Green" class = "btn btn-block btn-outline-primary" style="background-color: Green;">Green</button>
+      </div>
+      <div class="col-3 col-md-2">
+        <button type ="button" data-color = "Red" class = "btn btn-block btn-outline-primary" style="background-color: red;">Red</button>
+      </div>
+      <div class="col-3 col-md-2">
+        <button type ="button" data-color = "Purple" class = "btn btn-block btn-outline-primary" style="background-color: purple;">Purple</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <hr>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
