@@ -1,0 +1,79 @@
+body {
+    background: #DDDDDD;
+    color: #800000;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+}
+
+.page-container {
+    margin-top: 75px;
+}
+
+button{
+    text-align: center;
+}
+
+
+#time{
+    background-color: #FFFFFF;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+#timeZone{
+    background-color: #FFFFFF;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+#buttonDiv{
+    background-color: #FFFFFF;
+    margin: 1em;
+    padding: 1em;
+    font-size: 1.5em;
+
+}
+
+#threeButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    
+}
+
+.my-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+.button {
+    text-align: center;
+    color: white;
+    padding: 15px 32px;
+    margin: 4px 10px;
+    font-size: 20px;
+    background-color: skyblue;
+
+}
+
+.buttonTres {
+    text-align: center;
+    color: white;
+    padding: 15px 32px;
+    
+    margin: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    background-color:green;
+    width: 200px;
+}
