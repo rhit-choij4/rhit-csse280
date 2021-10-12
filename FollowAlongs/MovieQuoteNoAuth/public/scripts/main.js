@@ -6,6 +6,7 @@ rhit.FB_KEY_QUOTE = "quote";
 rhit.FB_KEY_MOVIE = "movie";
 rhit.FB_KEY_LAST_TOUCHED = "lastTouched";
 rhit.FbMovieQuotesManager = null;
+rhit.FbSingleQuoteManager = null;
 
 // from https://stackoverflow.com/questions/494143/creating-a-new-dom-element-from-an-html-string-using-built-in-dom-methods-or-pro/35385518#35385518
 function htmlToElement(html) {
@@ -77,8 +78,13 @@ rhit.ListPageController = class {
 			const newCard = this._createCard(mq);
 
 			newCard.onclick = (event) => {
-				console.log(`You clicked on ${mq.id} `);
-				rhit.storage.setMovieQuoteId(mq.id);
+				// console.log(`You clicked on ${mq.id} `);
+				// rhit.storage.setMovieQuoteId(mq.id);
+
+
+				window.location.href = `/moviequote.html?id=${mq.id}`;
+
+
 			};
 			
 			newList.appendChild(newCard);
@@ -170,23 +176,104 @@ rhit.FbMovieQuotesManager = class {
 	  }
    }
    
+   rhit.DetailPageController = class {
+	constructor() {
+		document.querySelector("#submitEditQuote").addEventListener("click", (event)  => {
 
+			const quote = document.querySelector("#inputQuote").value;
+			const movie = document.querySelector("#inputMovie").value;
 
+			rhit.FbSingleQuoteManager.update(quote,movie);
+		});
+		//pre animation
+		$("#editQuoteDialog").on("show.bs.modal", (event) =>{
 
+			document.querySelector("#inputQuote").value = rhit.FbSingleQuoteManager.quote;
+			document.querySelector("#inputMovie").value = rhit.FbSingleQuoteManager.movie;
 
-rhit.storage = rhit.storage || {};
-rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId";
-rhit.storage.getMovieQuoteId = function(){
-	const mqId = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
-	if(!mqId){
-		console.log("No movie quote id")
+		})
+
+		//post animation
+		$("#editQuoteDialog").on("shown.bs.modal", (event) =>{
+
+			document.querySelector("#inputQuote").focus();
+
+		})
+		rhit.FbSingleQuoteManager.beginListening(this.updateView.bind(this));
 	}
-	return mqId;
-}
-rhit.storage.setMovieQuoteId = function(movieQuoteId){
-	sessionStorage.setItem(rhit.storage.MOVIEQUOTE_ID_KEY,movieQuoteId);
+	updateView() {
+		document.querySelector("#cardQuote").innerHTML = rhit.FbSingleQuoteManager.quote;
+		document.querySelector("#cardMovie").innerHTML = rhit.FbSingleQuoteManager.movie;
 
-}
+	}
+   }
+   
+   rhit.FbSingleQuoteManager = class {
+	constructor(movieQuoteId) {
+	  this._documentSnapshot = {};
+	  this._unsubscribe = null;
+	  this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTE).doc(movieQuoteId);
+	  console.log(`Listening to ${this._ref.path}`)
+	}
+	beginListening(changeListener) {
+
+		this._unsubscribe = this._ref.onSnapshot((doc) => {
+			if (doc.exists) {
+				console.log("Document data:", doc.data());
+				this._documentSnapshot= doc;
+				changeListener();
+			} else {
+				// doc.data() will be undefined in this case
+				console.log("No such document!");
+			}
+		});
+
+
+	}
+	stopListening() {
+	  this._unsubscribe();
+	}
+	update(quote, movie) {
+
+		this._ref.update({
+			[rhit.FB_KEY_QUOTE]:quote,
+			[rhit.FB_KEY_MOVIE]:movie,
+			[rhit.FB_KEY_LAST_TOUCHED]: firebase.firestore.Timestamp.now(),
+		})
+		.then(() =>{
+			console.log("Document Successfully updated");
+		})
+		.catch(function(error){
+
+			console.log("Error updating document", error);
+
+		})
+
+	}
+	delete() {}
+
+	get quote(){
+		return this._documentSnapshot.get(rhit.FB_KEY_QUOTE);
+	}
+	get movie(){
+		return this._documentSnapshot.get(rhit.FB_KEY_MOVIE);
+	}
+   }
+   
+
+
+// rhit.storage = rhit.storage || {};
+// rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId";
+// rhit.storage.getMovieQuoteId = function(){
+// 	const mqId = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
+// 	if(!mqId){
+// 		console.log("No movie quote id")
+// 	}
+// 	return mqId;
+// }
+// rhit.storage.setMovieQuoteId = function(movieQuoteId){
+// 	sessionStorage.setItem(rhit.storage.MOVIEQUOTE_ID_KEY,movieQuoteId);
+// }
 
 /* Main */
 /** function and class syntax examples */
@@ -204,7 +291,21 @@ rhit.main = function () {
 	if(document.querySelector("#detailPage")){
 		console.log("You are on the detail Page");
 
+		// const movieQuoteId = rhit.storage.getMovieQuoteId();
 
+		const queryString = window.location.search;
+		console.log(queryString);
+		const urlParams = new URLSearchParams(queryString);
+		const movieQuoteId = urlParams.get("id");
+
+		console.log(`Detail page for ${movieQuoteId}`)
+		if(!movieQuoteId){
+			console.log("Error! Missing movie quote id!");
+			window.location.href = "/";
+		}
+
+		rhit.FbSingleQuoteManager = new rhit.FbSingleQuoteManager(movieQuoteId);
+		new rhit.DetailPageController();
 	}
 
 
