@@ -199,6 +199,22 @@ rhit.FbMovieQuotesManager = class {
 			document.querySelector("#inputQuote").focus();
 
 		})
+
+		document.querySelector("#submitDeleteQuote").addEventListener("click", (event)  => {
+
+			rhit.FbSingleQuoteManager.delete().then(() => {
+				console.log("Document successfully deleted!");
+				window.location.href = "/";
+			}).catch((error) => {
+				console.error("Error removing document: ", error);
+			});
+
+
+
+
+		});
+
+
 		rhit.FbSingleQuoteManager.beginListening(this.updateView.bind(this));
 	}
 	updateView() {
@@ -250,7 +266,11 @@ rhit.FbMovieQuotesManager = class {
 		})
 
 	}
-	delete() {}
+	delete() {
+
+		return this._ref.delete();
+
+	}
 
 	get quote(){
 		return this._documentSnapshot.get(rhit.FB_KEY_QUOTE);
