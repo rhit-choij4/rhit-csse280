@@ -21,6 +21,12 @@ body {
         column-count: 4;
         column-gap: 10px;
     }
+
+    
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+     }
 }
 
 .pin {
@@ -65,3 +71,12 @@ body {
     transform: translateY(2px);
     opacity: 0.8;
 }
+
+.dropdown-menu-right{
+    left:-128px;
+}
+
+
+
+
+
