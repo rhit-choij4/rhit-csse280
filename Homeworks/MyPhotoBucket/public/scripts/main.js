@@ -395,7 +395,6 @@ rhit.initializePage = function(){
 
 		console.log(`Detail page for ${picCaptionId}`)
 		if (!picCaptionId) {
-			console.log("Error! Missing movie quote id!");
 			window.location.href = "/";
 		}
 		rhit.FbSingleUrlManager = new rhit.FbSingleUrlManager(picCaptionId);
@@ -410,8 +409,28 @@ rhit.initializePage = function(){
 		new rhit.LoginPageController();
 
 	}
-}
+	rhit.startFirebaseUI();
 
+}
+rhit.startFirebaseUI = function(){
+
+	// FirebaseUI config.
+	var uiConfig = {
+        signInSuccessUrl: '/',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+          firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+        ],
+      };
+
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+}
 
 /* Main */
 /** function and class syntax examples */

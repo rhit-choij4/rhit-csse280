@@ -115,3 +115,8 @@ body {
 #menuDelete{
     display: none;
 }
+
+#LoginText{
+    text-align: center;
+    font-size: 2em;
+}
