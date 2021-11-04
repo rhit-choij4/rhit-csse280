@@ -1,0 +1,27 @@
+body{
+    background: #800000;
+}
+
+.button-group {
+    text-align: center;
+    padding: 5vw;
+}
+
+.button-group button {
+    font-size: 1.5em;
+    padding: 10px;
+    margin: 0px 10px;
+}
+
+#counterText {
+    color: white;
+    font: 4em Consolas, Arial, sans-serif;
+    text-align: center;
+}
+
+.button-group {
+    transition-duration: 1000ms;
+    color: #800000;
+    background-color: #800000;
+    border: 0px;
+}

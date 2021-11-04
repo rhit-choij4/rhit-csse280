@@ -1,15 +1,11 @@
+name = "Tristan Scheiner";
 
-let name = "Jinyoung Choi";
-let counter = 0; 
-inc = () => {
-    counter++;
-};
-dec = () => {
-    counter--;
-};
-getCounter = () => {return counter};
+let counter = 0;
+inc = () => {counter++;};
+dec = () => {counter--;};
+getCounter = () => {return counter;}
 
-module.exports ={
+module.exports = {
     name,
     inc,
     dec,

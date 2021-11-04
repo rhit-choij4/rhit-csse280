@@ -1,0 +1,21 @@
+[debug] [2021-09-20T20:19:35.391Z] ----------------------------------------------------------------------
+[debug] [2021-09-20T20:19:35.392Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\choij4\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-09-20T20:19:35.393Z] CLI Version:   9.18.0
+[debug] [2021-09-20T20:19:35.393Z] Platform:      win32
+[debug] [2021-09-20T20:19:35.393Z] Node Version:  v14.17.6
+[debug] [2021-09-20T20:19:35.394Z] Time:          Mon Sep 20 2021 16:19:35 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-09-20T20:19:35.394Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-20T20:19:35.401Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-20T20:19:35.402Z] > authorizing via signed-in user (jchoi8163@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\choij4\OneDrive\RHIT\Sophmore\Semester 1\CSSE 280\fall-2021-personal-repo-rhit-choij4\Homeworks
+
