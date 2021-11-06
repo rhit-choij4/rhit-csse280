@@ -1,0 +1,106 @@
+body {
+    background: #DDDDDD;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+}
+
+.page-container {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* 
+#gameStateText {
+    text-align: center;
+} */
+
+
+.my-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.square {
+    background: #80000080;
+    text-align: center;
+    font-size: 60px;
+    line-height: 100px;
+    color: white;
+    font-weight: 500;
+    flex: 1 0 33.3%;    
+}
+.b-left {
+    border-left: 4px solid #000000;
+}
+.b-right {
+    border-right: 4px solid #000000;
+}
+.b-top {
+    border-top: 4px solid #000000;
+}
+.b-bottom {
+    border-bottom: 4px solid #000000;
+}
+
+#newGameButton {
+    margin-top: 15px;
+    background: #800000;
+    color: white;
+    margin-left: auto;
+    grid-column: 1 / -1;
+}
+
+#gameBoard {
+    margin-top: 40px;
+    
+    /*
+    margin-left: 50%;
+    position: relative;
+    left: -150px; */
+
+    /* margin: 40px auto 15px; */
+
+    width: 300px;
+    height: 300px;
+}
+
+#gameBoard {
+    margin-top: 40px;
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 33% 33% 33%;
+}
+
+@media (min-width: 576px) {
+    #gameBoard {
+        width: 450px;
+        height: 450px;
+    }
+    .square {
+        line-height: 140px;
+        font-size: 90px;
+    }
+    #newGameButton {
+        font-size: 1.25em;
+    }
+}
+
+@media (min-width: 768px) {
+    #gameBoard {
+        width: 600px;
+        height: 600px;
+    }
+    .square {
+        line-height: 180px;
+        font-size: 120px;
+    }
+    #newGameButton {
+        font-size: 1.5em;
+    }
+}
