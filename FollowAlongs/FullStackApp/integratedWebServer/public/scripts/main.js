@@ -101,7 +101,6 @@ function deleteEntry (){
         counter = 0;
         updateView();
         loadEntries();
-
     }).catch((err) => {
         console.log(err);
     });

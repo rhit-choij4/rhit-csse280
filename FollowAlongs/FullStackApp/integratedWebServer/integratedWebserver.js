@@ -17,7 +17,7 @@ fs.readFile(serverSideStorage, function(err, buf) {
     } else {
         data = JSON.parse(buf.toString());
         if(data.length != 0) {
-            cunter = data[data.length - 1];
+            counter = data[data.length - 1];
         }
     }
     console.log("Data read from file");
